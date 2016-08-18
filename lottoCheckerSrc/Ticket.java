@@ -1,34 +1,29 @@
 package lottochecker;
 
 import java.util.ArrayList;
-
-/**
- * @author Group 3
- */
-
 /*
  * Interface for multiple ticket types
  * eg powerball, fantasy 5, superlotto plus
 */
 
-public interface Ticket 
+public interface Ticket
 {
     /**
      * Checks for specific lottery ticket number matches.
-     * The algorithm works by initializing an 
-     * @param drawnNumbers the lottery numbers drawn for the specific week. 
+     * The algorithm works by initializing an
+     * @param drawnNumbers the lottery numbers drawn for the specific week.
      */
     public void setMatches(int[] drawnNumbers);
-    
+
     /**
      * Mutator method for picks variable
      * @param picksToSet data of picks to update
      */
     public void setPicks(ArrayList<int[]> picksToSet);
-    
+
     /**
      * Accesses the successful matches of the lottery ticket.
-     * @return matches 
+     * @return matches
      */
     public ArrayList<int[]> getMatches();
     /**

@@ -13,22 +13,18 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Group 3
- */
-public class Seeker 
+public class Seeker
 {
     private int[] drawn = new int[6];
     private static Seeker instance;
-    
+
     public static Seeker getInstance()
     {
         if(instance == null)
             instance = new Seeker();
         return instance;
     }
-    
+
     public int[] Seek(URL url) throws IOException
     {
         ArrayList<String> drawnNumbers = new ArrayList();
@@ -58,7 +54,7 @@ public class Seeker
         }catch (UnknownHostException ex) {
                 JOptionPane.showMessageDialog(null, "No Network Connection", "ERROR", JOptionPane.INFORMATION_MESSAGE);
             }
-        
+
         return drawn;
     }
 }

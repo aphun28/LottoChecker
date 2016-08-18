@@ -15,10 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Group 3
- */
 public class p151 extends javax.swing.JFrame {
      private Ticket tick;
      private int numPicks;
@@ -27,12 +23,12 @@ public class p151 extends javax.swing.JFrame {
      private Boolean fileChosen = false;
      TicketImageParser ticketImgParser;
     /**
-     * Creates new form p151 and an static array 
+     * Creates new form p151 and an static array
      */
     public p151() {
         initComponents();
         this.picks = new JTextField[][] {{pick1_1, pick1_2, pick1_3, pick1_4, pick1_5, pick1_6}
-            ,{pick2_1, pick2_2, pick2_3, pick2_4, pick2_5, pick2_6} 
+            ,{pick2_1, pick2_2, pick2_3, pick2_4, pick2_5, pick2_6}
             ,{pick3_1, pick3_2, pick3_3, pick3_4, pick3_5, pick3_6}
             ,{pick4_1, pick4_2, pick4_3, pick4_4, pick4_5, pick4_6}
             ,{pick5_1, pick5_2, pick5_3, pick5_4, pick5_5, pick5_6}};
@@ -395,7 +391,7 @@ public class p151 extends javax.swing.JFrame {
         if(this.fileChosen == false){
             JOptionPane.showMessageDialog(null, "Please select an image file", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }else{
-             
+
         tick = new PowerBallTicket(this.ticketImgParser.getPicks());
          try {
              this.drawnNumbers = seek("megaMillions");
@@ -421,7 +417,7 @@ public class p151 extends javax.swing.JFrame {
          } catch (IOException ex) {
              Logger.getLogger(p151.class.getName()).log(Level.SEVERE, null, ex);
          }
-         
+
          revalidateResults();
         }
     }//GEN-LAST:event_powerBallActionPerformed
@@ -434,7 +430,7 @@ public class p151 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.fileChosen == false){
             JOptionPane.showMessageDialog(null, "Please select an image file", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-        }else{  
+        }else{
         tick = new PowerBallTicket(this.ticketImgParser.getPicks());
          try {
              this.drawnNumbers = seek("superLotto");
@@ -446,7 +442,7 @@ public class p151 extends javax.swing.JFrame {
     }//GEN-LAST:event_superLottoActionPerformed
 
 /**
- * Allows user to choose image file of user's lottery ticket and displays the ticket. 
+ * Allows user to choose image file of user's lottery ticket and displays the ticket.
  * User chooses image and the program approves of it
  * Reads image and sets it as the image of the correct UI JLabel
  * @param evt "Choose File" button being pressed
@@ -503,7 +499,7 @@ public class p151 extends javax.swing.JFrame {
             int[][] cleanRow = new int[5][6];
             for(int i = 0; i < oldPicks.size(); i++){
             for(int j = 0; j < oldPicks.get(0).length; j++){
-               
+
                cleanRow[i][j] = Integer.parseInt(this.picks[i][j].getText());
             }
         }
@@ -521,16 +517,16 @@ public class p151 extends javax.swing.JFrame {
 /**
  * Populates the static array editable array for any error in the tickets
  * @param curPicks the current lottery numbers of the image
- */    
+ */
     private void populatePicks(ArrayList<int[]> curPicks){
         ArrayList<int[]> picksTmp = curPicks;
         for(int i = 0; i < picksTmp.size(); i++){
             for(int j = 0; j < picksTmp.get(0).length; j++){
                 this.picks[i][j].setText(picksTmp.get(i)[j] + "");
-            }        
+            }
         }
     }
-    
+
 /**
  * Main Method.
  * Creates the UI(our thread)
@@ -540,7 +536,7 @@ public static void main(String args[]) throws MalformedURLException, IOException
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-     * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+     * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
      */
     try {
         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -575,7 +571,7 @@ public static void main(String args[]) throws MalformedURLException, IOException
 private void printResults(Ticket tick){
     //ArrayList<StringBuilder> update = LottoChecker.processResults(tick);
     ArrayList<int[]> matches = new ArrayList<int[]>(tick.getMatches());
-        
+
     for(int i = 0; i < matches.size(); i++){
         for(int j = 0; j < matches.get(0).length; j++){
             if(matches.get(i)[j] != 0){
@@ -598,7 +594,7 @@ public int[] seek(String gameChoice) throws MalformedURLException, IOException
         int[] drawn = new int[6];
         URL url = new URL("http://test.com");
         Seeker s = Seeker.getInstance();
-        
+
         switch (gameChoice) {
           case "fantasyFive":
               drawn = (s.Seek(new URL("http://www.calottery.com/sitecore/content/Miscellaneous/download-numbers/?GameName=fantasy-5")));
@@ -606,7 +602,7 @@ public int[] seek(String gameChoice) throws MalformedURLException, IOException
           case "powerBall":
               drawn = (s.Seek(new URL("http://www.calottery.com/sitecore/content/Miscellaneous/download-numbers/?GameName=powerball")));
               break;
-          case "superLotto":            
+          case "superLotto":
               drawn = (s.Seek(new URL("http://www.calottery.com/sitecore/content/Miscellaneous/download-numbers/?GameName=superlotto-plus")));
               break;
           case "megaMillions":
@@ -614,7 +610,7 @@ public int[] seek(String gameChoice) throws MalformedURLException, IOException
               break;
       }
         StringBuilder drawnNumString = new StringBuilder();
-      
+
         for(int i = 0; i < drawn.length; i++){
         drawnNumString.append(Integer.toString(drawn[i]) + " ");
         }
@@ -669,6 +665,6 @@ public int[] seek(String gameChoice) throws MalformedURLException, IOException
     private javax.swing.JButton superLotto;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JTextField[][] picks;
-    
-    
+
+
 }

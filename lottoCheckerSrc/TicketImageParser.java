@@ -9,14 +9,10 @@ import javax.swing.JTextField;
 import net.sourceforge.tess4j.*;
 import net.sourceforge.vietocr.ImageHelper;
 
-/** 
- *
- * @author Group 3
- */
 public class TicketImageParser {
-    
+
     ArrayList<int[]> picks;
-    
+
     /**
      * reads lottery numbers from the ticket image and
      * displays them onto a jtextfield
@@ -26,29 +22,29 @@ public class TicketImageParser {
      */
     public TicketImageParser(File ticketImage, JTextField[][] picks) throws IOException{
         File imageFile = ticketImage;
-        
+
         Tesseract instance = Tesseract.getInstance();
         instance.setTessVariable("tessedit_char_whitelist", "0123456789");
         instance.setTessVariable("load_system_dawg", "F");
         instance.setTessVariable("load_freq_dawg", "F");
-        
+
     	    //create a temp file
     	    File BlackAndWhiteTmp = File.createTempFile("BlackAndWhite", "png");
             File croppedTmp = File.createTempFile("cropped", "png");
             File croppedBinTmp = File.createTempFile("croppedBin", "png");
-        
+
         BufferedImage originalImage = ImageIO.read(imageFile);
         BufferedImage blackAndWhite = ImageHelper.convertImageToGrayscale(originalImage);
 
         ImageIO.write(blackAndWhite, "png", BlackAndWhiteTmp);
-        
+
         BufferedImage cropped = blackAndWhite.getSubimage(25, 130, 250, 70);
 
         ImageIO.write(cropped, "png", croppedTmp);
         BufferedImage croppedBin = ImageHelper.convertImageToBinary(cropped);
 
         ImageIO.write(croppedBin, "png", croppedBinTmp);
-        
+
         try {
             String result = instance.doOCR(cropped);
 
@@ -84,7 +80,7 @@ public class TicketImageParser {
         System.err.println(e.getMessage());
         }
     }
-    
+
     public int[] cleanTicket(String toClean){
         int[] cleanRow = new int[6];
         String temp = new String();
@@ -97,8 +93,8 @@ public class TicketImageParser {
         }
         return cleanRow;
     }
-    
+
     public ArrayList<int[]> getPicks() {
-    return this.picks;    
+    return this.picks;
     }
 }
