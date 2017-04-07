@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lottochecker;
 
 import java.io.BufferedReader;
@@ -29,6 +24,7 @@ public class Seeker
     {
         ArrayList<String> drawnNumbers = new ArrayList();
         String inputLine;
+        
         try{
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             while ((inputLine = in.readLine()) != null)
@@ -51,10 +47,10 @@ public class Seeker
             for(int i= 0; i < parts.length ; i++){
                 this.drawn[i] = Integer.parseInt(parts[i]);
             }
-        }catch (UnknownHostException ex) {
+        }
+        catch (UnknownHostException ex){
                 JOptionPane.showMessageDialog(null, "No Network Connection", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-            }
-
+        }
         return drawn;
     }
 }

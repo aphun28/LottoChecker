@@ -10,7 +10,6 @@ public interface Ticket
 {
     /**
      * Checks for specific lottery ticket number matches.
-     * The algorithm works by initializing an
      * @param drawnNumbers the lottery numbers drawn for the specific week.
      */
     public void setMatches(int[] drawnNumbers);

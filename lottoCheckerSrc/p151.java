@@ -22,8 +22,9 @@ public class p151 extends javax.swing.JFrame {
      private File ticketImg;
      private Boolean fileChosen = false;
      TicketImageParser ticketImgParser;
+    
     /**
-     * Creates new form p151 and an static array
+     * Creates new form using javaswing and a static array
      */
     public p151() {
         initComponents();
@@ -33,7 +34,7 @@ public class p151 extends javax.swing.JFrame {
             ,{pick4_1, pick4_2, pick4_3, pick4_4, pick4_5, pick4_6}
             ,{pick5_1, pick5_2, pick5_3, pick5_4, pick5_5, pick5_6}};
     }
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();

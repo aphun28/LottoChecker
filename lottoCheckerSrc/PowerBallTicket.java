@@ -2,10 +2,12 @@ package lottochecker;
 
 import java.util.ArrayList;
 
-public class PowerBallTicket implements Ticket{
+public class PowerBallTicket implements Ticket
+{
     private ArrayList<int[]> picks;
     private ArrayList<int[]> matches;
     private static final int POWER_POS = 5;
+    
     /**
      * Initializes a collection of picks
      * @param picks the picks
@@ -66,29 +68,32 @@ public class PowerBallTicket implements Ticket{
         return this.matches;
     }
 
-    @Override
     /**
      * Accesses the picks of the lottery ticket.
      * @return picks
      */
+    @Override
     public ArrayList<int[]> getPicks() {
         return this.picks;
     }
-/**
- * Checks if the objects are equal
- * @param o the object in this case picks
- * @return true if it is equal, false if it is not
- */
+
+    /**
+     * Checks if the objects are equal
+     * @param o the object in this case picks
+     * @return true if it is equal, false if it is not
+     */
     @Override
     public boolean equals(Object o)
     {
-        if(this == o)
-        {return true;}
-        if(o == null)
-        {return false;}
-        if(getClass() != o.getClass())
-        {return false;}
+        if(this == o) {
+            return true; 
+        }
+        if(o == null) {
+            return false;
+        }
+        if(getClass() != o.getClass()) {
+            return false;
+        }
         return false;
     }
-
 }

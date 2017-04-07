@@ -25,8 +25,8 @@ public class TicketImageParser {
 
         Tesseract instance = Tesseract.getInstance();
         instance.setTessVariable("tessedit_char_whitelist", "0123456789");
-        instance.setTessVariable("load_system_dawg", "F");
-        instance.setTessVariable("load_freq_dawg", "F");
+        instance.setTessVariable("load_system", "F");
+        instance.setTessVariable("load_freq", "F");
 
     	    //create a temp file
     	    File BlackAndWhiteTmp = File.createTempFile("BlackAndWhite", "png");
@@ -76,8 +76,9 @@ public class TicketImageParser {
                 picks[i][5].setVisible(true);
             }
 
-        } catch (TesseractException e) {
-        System.err.println(e.getMessage());
+        } 
+        catch (TesseractException e){
+            System.err.println(e.getMessage());
         }
     }
 
